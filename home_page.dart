@@ -1,22 +1,39 @@
 import 'package:flutter/material.dart';
 
-import 'home_page.dart';
-
-class Homepage extends StatelessWidget {
-  const Homepage({super.key});
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Homepage"),
-        centerTitle: true,
-        backgroundColor: const Color.fromARGB(255, 221, 41, 176),
-        foregroundColor: const Color.fromARGB(255, 255, 255, 255),
-        //leading: Icon(Icons.home),
+        // centerTitle: true,
+        backgroundColor: Colors.blue,
+        foregroundColor: Colors.white,
+        // leading: Icon(Icons.home),
         actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.person)),
-          IconButton(onPressed: () {}, icon: Icon(Icons.search)),
+          IconButton(
+            tooltip: "Search",
+            onPressed: () {},
+            icon: Icon(Icons.search),
+          ),
+          IconButton(
+            tooltip: "Person",
+            onPressed: () {},
+            icon: Icon(Icons.person),
+          ),
+          IconButton(
+            tooltip: "Settings",
+            onPressed: () {},
+            icon: Icon(Icons.settings),
+          ),
+
+          IconButton(
+            tooltip: "Delete",
+            onPressed: () {},
+            icon: Icon(Icons.delete),
+          ),
         ],
       ),
       drawer: Drawer(
@@ -24,89 +41,122 @@ class Homepage extends StatelessWidget {
           children: [
             UserAccountsDrawerHeader(
               accountName: Text("Shuvon"),
-              accountEmail: Text("Shuvon@gmail.com"),
-              decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 30, 118, 233),
-              ),
+              accountEmail: Text("shuvon@gmail.com"),
+              decoration: BoxDecoration(color: Colors.blue),
             ),
             ListTile(
               title: Text("Homepage"),
+
               leading: Icon(Icons.home),
-              hoverColor: const Color.fromARGB(255, 0, 6, 10),
+              hoverColor: Colors.grey,
               onTap: () {},
             ),
-            ListTile(title: Text("Person"), leading: Icon(Icons.person)),
+
+            Spacer(),
+            // Divider(),
+
+            ListTile(
+              title: Text("Profile"),
+              leading: Icon(Icons.person),
+              hoverColor: Colors.pink[100],
+              onTap: () {},
+            ),
           ],
         ),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(10),
-            child: TextButton(
-              onPressed: () {},
-              style: TextButton.styleFrom(
-                backgroundColor: const Color.fromARGB(255, 114, 20, 131),
-                foregroundColor: Colors.white,
-                fixedSize: Size(150, 20),
-                side: BorderSide(),
-                elevation: 100,
+
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: Row(
+                children: [
+                  TextButton(
+                    onPressed: () {},
+                    style: TextButton.styleFrom(
+                      backgroundColor: Colors.green,
+                      foregroundColor: Colors.white,
+                      fixedSize: Size(100, 100),
+                      side: BorderSide(),
+                      elevation: 10,
+                    ),
+                    child: Text("TextButton"),
+                  ),
+                  SizedBox(width: 10),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color.fromARGB(
+                          255,
+                          215,
+                          129,
+                          230,
+                        ),
+                        foregroundColor: Colors.white,
+                        fixedSize: Size(150, 20),
+                        side: BorderSide(),
+                      ),
+                      child: Text("ElevatedButton"),
+                    ),
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: OutlinedButton(
+                      onPressed: () {},
+                      child: Text("OutlinedButton"),
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () {},
+                    style: IconButton.styleFrom(backgroundColor: Colors.yellow),
+                    icon: Icon(Icons.login),
+                  ),
+                ],
               ),
-              child: Text("Text Button"),
             ),
-          ),
-          SizedBox(width: 50),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: ElevatedButton(
-              onPressed: () {},
-              style: TextButton.styleFrom(
-                backgroundColor: const Color.fromARGB(255, 41, 2, 48),
-                foregroundColor: Colors.white,
-                fixedSize: Size(150, 20),
-                side: BorderSide(),
-                elevation: 100,
+
+            Container(
+              height: 200,
+              width: 200,
+              padding: EdgeInsets.all(30),
+              margin: EdgeInsets.all(20),
+              alignment: Alignment.bottomRight,
+              decoration: BoxDecoration(
+                color: Colors.purple,
+                border: Border.all(width: 5, color: Colors.black),
+
+                borderRadius: BorderRadius.all(Radius.circular(20)),
+                gradient: RadialGradient(colors: [Colors.red, Colors.green]),
               ),
-              child: Text("ElevatedButton"),
+              child: Text("Hello container"),
             ),
-          ),
-          OutlinedButton(
-            onPressed: () {},
-            style: TextButton.styleFrom(
-              backgroundColor: const Color.fromARGB(255, 131, 74, 20),
-              foregroundColor: Colors.white,
-              fixedSize: Size(150, 20),
-              side: BorderSide(),
-              elevation: 100,
-            ),
-            child: Text("OutlineButton"),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: IconButton(
-              onPressed: () {},
-              style: TextButton.styleFrom(
-                backgroundColor: const Color.fromARGB(255, 87, 20, 131),
-                foregroundColor: Colors.white,
-                fixedSize: Size(130, 20),
-                side: BorderSide(),
+            SizedBox(
+              height: 800,
+              width: 200,
+              child: Card(
+                margin: EdgeInsets.all(20),
+                color: Colors.blue,
+                shadowColor: Colors.red,
                 elevation: 50,
+                //shape: (),
+                child: Center(child: Text("Hello Card,shuvon")),
               ),
-
-              icon: Icon(Icons.login),
             ),
-          ),
-        ],
-      ),
 
+            Image.asset('assets/images/Screenshot.png'),
+          ],
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         tooltip: "Add",
-        backgroundColor: const Color.fromARGB(255, 64, 161, 251),
+        backgroundColor: Colors.grey,
         foregroundColor: Colors.white,
-        shape: BeveledRectangleBorder(),
+
         child: Icon(Icons.add),
       ),
     );
